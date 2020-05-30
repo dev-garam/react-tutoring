@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 
 class App extends Component {
+  id = 1
   state = {
     username: '',
     password : '',
-    id : 0,
     list : [],
   }
+
+  usernameInput = null
 
   handleChange = (e) => {
     const {value, name} = e.target
@@ -16,37 +18,40 @@ class App extends Component {
     
   }
   
-  handleInsert = () => {
-		const {list, username, password, id} = this.state
+  handleInsert = (e) => {
+    e.preventDefault()
+    const {list, username, password} = this.state
+    
 		this.setState({
-      id: id + 1,
 			list: list.concat({
-        id,
 				username,
         password,
+        id : this.id
 			}),
 			username: '',
-			password: '',
-		})
+      password: '',
+    })
+    this.id++
+    console.log(this.usernameInput)
+    this.usernameInput.focus()
 	}
  
   render() {
-
+    const {list, username, password} = this.state
     return (
 
       <div>
-        <input type="text" value={this.state.username} name="username" onChange={this.handleChange}/>
-        <br />
-        <input type="text" value={this.state.password} name="password" onChange={this.handleChange}/>
-        <br />
-        <button onClick={this.handleInsert}>추가하기</button>
-
+        <form onSubmit={this.handleInsert}>
+          <input type="text" value={username} name="username" onChange={this.handleChange} ref={(ref) => (this.usernameInput = ref)}/>
+          <input type="text" value={password} name="password" onChange={this.handleChange} />
+          <button type="submit">추가하기</button>
+        </form>
         <ul>
           {
-            this.state.list.map((item, index) => {
+            list.map((user) => {
               return (
-                <li key={item.id}>
-                  {item.username} 의 비밀번호는 {item.password} 입니다.
+                <li key={user.id}>
+                  {user.username} 의 비밀번호는 {user.password} 입니다.
                 </li>
               )
             })
