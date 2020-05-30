@@ -41,14 +41,18 @@ class App extends Component {
   }
   
   handleDelete = (id) => {
-    const{ list } = this.state
-    const copideList = list.slice()
-    const index = list.findIndex(user=> user.id === id)
-    copideList.splice(index, 1)
-    this.setState({
-      list : copideList
-    })
+    // const{ list } = this.state
+    // const copideList = list.slice()
+    // const index = list.findIndex(user=> user.id === id)
+    // copideList.splice(index, 1)
+    // this.setState({
+    //   list : copideList
+    // })
     
+
+  this.setState({
+    list: this.state.list.filter((user) => user.id !== id)
+  })
 
   }
  
