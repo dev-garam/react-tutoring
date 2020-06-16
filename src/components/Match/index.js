@@ -1,1 +1,1 @@
-export { default } from './MatchList';
+export { default } from './MatchList'

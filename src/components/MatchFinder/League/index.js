@@ -1,1 +1,1 @@
-export { default } from './LeagueList';
+export { default } from './LeagueList'
