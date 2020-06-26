@@ -1,10 +1,22 @@
 .ColorList {
-	margin-top: 10px;
-	text-align: center;
+    margin-top: 10px;
+    text-align: center;
 }
 
 .ColorList input {
-	height: 25px;
-	border: 1px solid #999;
-	outline-width: 0;
+    height: 25px;
+    border: 1px solid #999;
+    outline-width: 0;
+}
+
+.ColorListBox {
+    width: 1000px;
+    height: 1000px;
+    margin: 0 auto;
+    float: left;
+}
+.ColorItem {
+    width: 100px;
+    height: 100px;
+    float: left;
 }
